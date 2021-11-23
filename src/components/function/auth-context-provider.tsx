@@ -1,5 +1,5 @@
 import { createContext, Dispatch, ReactNode } from "react";
-import * as Auth from "stores/auth";
+import * as Auth from "stores/auth-store";
 import { useAuth } from "./use-auth";
 
 export const AuthContext = createContext<Auth.State>(Auth.initialState);

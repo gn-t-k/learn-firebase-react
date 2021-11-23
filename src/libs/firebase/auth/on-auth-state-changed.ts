@@ -1,6 +1,6 @@
 import { User } from "firebase/auth";
 import { auth } from "./auth";
-import { LoggedInActionPayload } from "stores/auth";
+import { LoggedInActionPayload } from "stores/auth-store";
 
 export const onAuthStateChanged = auth.onAuthStateChanged;
 

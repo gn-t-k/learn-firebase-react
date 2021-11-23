@@ -3,7 +3,7 @@ import {
   onAuthStateChanged,
 } from "libs/firebase/auth/on-auth-state-changed";
 import { useEffect, useReducer } from "react";
-import * as Auth from "stores/auth";
+import * as Auth from "stores/auth-store";
 
 /**
  * - ログイン状態が変化したときにactionをdispatchするよう登録
