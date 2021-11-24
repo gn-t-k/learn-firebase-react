@@ -12,11 +12,11 @@ const TemplateStory: ComponentStory<typeof Login> = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const onEmailChange = (value: string) => {
-    action(value);
+    action(value)();
     setEmail(value);
   };
   const onPasswordChange = (value: string) => {
-    action(value);
+    action(value)();
     setPassword(value);
   };
 

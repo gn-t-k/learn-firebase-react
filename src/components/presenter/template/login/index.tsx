@@ -14,7 +14,6 @@ export const Login = (props: Props): JSX.Element => {
   const { email, password } = props;
   const onEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
-    console.log(event.target.value);
     props.onEmailChange(event.target.value);
   };
   const onPasswordChange = (event: ChangeEvent<HTMLInputElement>) => {
