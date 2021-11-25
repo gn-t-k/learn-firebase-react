@@ -5,11 +5,11 @@ type Props = {
   password: string;
   onEmailChange: (value: string) => void;
   onPasswordChange: (value: string) => void;
-  onLoginSubmit: () => void;
-  onSignUpSubmit: () => void;
+  onLoginSubmit: () => Promise<void>;
+  onSignUpSubmit: () => Promise<void>;
 };
 
-export const Login = ({ email, password, ...handlers }: Props) => {
+const Login = ({ email, password, ...handlers }: Props) => {
   const { onEmailChange, onPasswordChange, onLoginSubmit, onSignUpSubmit } =
     useLoginFrom(handlers);
 
