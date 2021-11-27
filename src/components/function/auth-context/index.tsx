@@ -1,6 +1,6 @@
 import { createContext, ReactNode } from "react";
 import * as Auth from "stores/auth-store";
-import { useAuth } from "./use-auth";
+import { useAuth } from "./hooks/use-auth";
 
 export const AuthContext = createContext<Auth.State>(Auth.initialState);
 

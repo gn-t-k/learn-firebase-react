@@ -1,4 +1,4 @@
-import Login from "components/presenter/template/login";
+import LoginPresenter from "components/presenter/template/login";
 import { useLogin } from "./hooks/use-login";
 
 const LoginContainer = () => {
@@ -8,7 +8,7 @@ const LoginContainer = () => {
   ] = useLogin();
 
   return (
-    <Login
+    <LoginPresenter
       {...{
         email,
         password,

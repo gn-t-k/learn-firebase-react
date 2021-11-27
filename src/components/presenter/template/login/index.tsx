@@ -9,7 +9,7 @@ type Props = {
   onSignUpSubmit: () => Promise<void>;
 };
 
-const Login = ({ email, password, ...handlers }: Props) => {
+const LoginPresenter = ({ email, password, ...handlers }: Props) => {
   const { onEmailChange, onPasswordChange, onLoginSubmit, onSignUpSubmit } =
     useLoginFrom(handlers);
 
@@ -23,4 +23,4 @@ const Login = ({ email, password, ...handlers }: Props) => {
   );
 };
 
-export default Login;
+export default LoginPresenter;

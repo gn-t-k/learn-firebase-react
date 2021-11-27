@@ -1,6 +1,6 @@
 import type { AppProps } from "next/app";
 import "modern-css-reset/dist/reset.min.css";
-import { AuthContextProvider } from "components/function/auth-context-provider";
+import { AuthContextProvider } from "components/function/auth-context";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

@@ -1,5 +1,6 @@
 import styles from "./index.module.css";
 import { useLogoutForm } from "./hooks/use-logout-form";
+import Link from "components/presenter/navigation/link";
 
 type LoggedInProps = {
   isLoggedIn: true;
@@ -9,13 +10,12 @@ type LoggedInProps = {
 
 type LoggedOutProps = {
   isLoggedIn: false;
-  linkToLoginPage: () => void;
 };
 
 export type Props = LoggedInProps | LoggedOutProps;
 
 const HomePresenter = (props: Props): JSX.Element =>
-  props.isLoggedIn ? <LoggedInHome {...props} /> : <LoggedOutHome {...props} />;
+  props.isLoggedIn ? <LoggedInHome {...props} /> : <LoggedOutHome />;
 
 const LoggedInHome = (props: LoggedInProps) => {
   const onLogoutSubmit = useLogoutForm({
@@ -32,10 +32,6 @@ const LoggedInHome = (props: LoggedInProps) => {
   );
 };
 
-const LoggedOutHome = (props: LoggedOutProps) => (
-  <span className={styles["link"]}>
-    <a onClick={props.linkToLoginPage}>ログイン/新規登録ページ</a>
-  </span>
-);
+const LoggedOutHome = () => <Link path="/login">ログイン/新規登録ページ</Link>;
 
 export default HomePresenter;

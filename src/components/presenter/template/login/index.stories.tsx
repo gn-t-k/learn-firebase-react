@@ -1,14 +1,14 @@
 import { useState } from "@storybook/addons";
 import { action } from "@storybook/addon-actions";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import Login from ".";
+import LoginPresenter from ".";
 
 export default {
   title: "template/login",
-  component: Login,
-} as ComponentMeta<typeof Login>;
+  component: LoginPresenter,
+} as ComponentMeta<typeof LoginPresenter>;
 
-const TemplateStory: ComponentStory<typeof Login> = (props) => {
+const TemplateStory: ComponentStory<typeof LoginPresenter> = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const onEmailChange = (value: string) => {
@@ -19,23 +19,22 @@ const TemplateStory: ComponentStory<typeof Login> = (props) => {
     action(value)();
     setPassword(value);
   };
+  const onLoginSubmit = (): Promise<void> => new Promise(action("login"));
+  const onSignUpSubmit = (): Promise<void> => new Promise(action("sign up"));
 
   return (
-    <Login
+    <LoginPresenter
       {...{
         email,
         onEmailChange,
         password,
         onPasswordChange,
-        onLoginSubmit: props.onLoginSubmit,
-        onSignUpSubmit: props.onSignUpSubmit,
+        onLoginSubmit,
+        onSignUpSubmit,
       }}
     />
   );
 };
 
 export const Default = TemplateStory.bind({});
-Default.args = {
-  onLoginSubmit: action("login"),
-  onSignUpSubmit: action("sign up"),
-};
+Default.args = {};

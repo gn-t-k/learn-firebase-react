@@ -1,5 +1,7 @@
 import "modern-css-reset/dist/reset.min.css";
 import * as nextImage from "next/image";
+import { RouterContext } from "next/dist/shared/lib/router-context";
+import { action } from "@storybook/addon-actions";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -8,6 +10,9 @@ export const parameters = {
       color: /(background|color)$/i,
       date: /Date$/,
     },
+  },
+  nextRouter: {
+    Provider: RouterContext.Provider,
   },
 };
 
