@@ -3,8 +3,8 @@ import { ChangeEvent, MouseEvent, useCallback } from "react";
 type Props = {
   onEmailChange: (value: string) => void;
   onPasswordChange: (value: string) => void;
-  onLoginSubmit: () => void;
-  onSignUpSubmit: () => void;
+  onLoginSubmit: () => Promise<void>;
+  onSignUpSubmit: () => Promise<void>;
 };
 
 export const useLoginFrom = (props: Props) => {
@@ -16,13 +16,13 @@ export const useLoginFrom = (props: Props) => {
     event.preventDefault();
     props.onPasswordChange(event.target.value);
   };
-  const onLoginSubmit = (event: MouseEvent<HTMLInputElement>) => {
+  const onLoginSubmit = async (event: MouseEvent<HTMLInputElement>) => {
     event.preventDefault();
-    props.onLoginSubmit();
+    await props.onLoginSubmit();
   };
-  const onSignUpSubmit = (event: MouseEvent<HTMLInputElement>) => {
+  const onSignUpSubmit = async (event: MouseEvent<HTMLInputElement>) => {
     event.preventDefault();
-    props.onSignUpSubmit();
+    await props.onSignUpSubmit();
   };
 
   return {

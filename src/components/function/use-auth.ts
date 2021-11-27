@@ -1,9 +1,8 @@
-import {
-  selectActionByAuthState,
-  onAuthStateChanged,
-} from "libs/firebase/auth/on-auth-state-changed";
+import { onAuthStateChanged } from "libs/firebase/auth/on-auth-state-changed";
+import { auth as firebaseAuth } from "libs/firebase/auth/auth";
 import { useEffect, useReducer } from "react";
 import * as Auth from "stores/auth-store";
+import { dispatchActionByAuthState } from "libs/firebase/auth/dispatch-action-by-auth-state";
 
 /**
  * - ログイン状態が変化したときにactionをdispatchするよう登録
@@ -18,11 +17,11 @@ export const useAuth = () => {
     const dispatchLoggedOutAction = () =>
       dispatch(Auth.actions.loggedOutAction());
 
-    const dispatchAction = selectActionByAuthState({
+    const dispatchAction = dispatchActionByAuthState({
       dispatchLoggedInAction,
       dispatchLoggedOutAction,
     });
-    const unsubscribe = onAuthStateChanged(dispatchAction);
+    const unsubscribe = onAuthStateChanged(firebaseAuth, dispatchAction);
 
     return unsubscribe;
   }, []);

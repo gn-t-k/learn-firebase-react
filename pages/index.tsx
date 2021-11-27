@@ -1,7 +1,8 @@
 import type { NextPage } from "next";
+import HomeContainer from "components/container/home";
 
 const Home: NextPage = () => {
-  return <p>example</p>;
+  return <HomeContainer />;
 };
 
 export default Home;

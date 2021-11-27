@@ -1,3 +1,4 @@
+import { action } from "@storybook/addon-actions";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import HomePresenter from ".";
 
@@ -6,8 +7,18 @@ export default {
   component: HomePresenter,
 } as ComponentMeta<typeof HomePresenter>;
 
-const TemplateStory: ComponentStory<typeof HomePresenter> = (props) => <HomePresenter {...props} />;
+const TemplateStory: ComponentStory<typeof HomePresenter> = (props) => (
+  <HomePresenter {...props} />
+);
 
-export const Default = TemplateStory.bind({});
-Default.args = {
+export const IsLoggedIn = TemplateStory.bind({});
+IsLoggedIn.args = {
+  isLoggedIn: true,
+  clientID: "clientID",
+};
+
+export const IsLoggedOut = TemplateStory.bind({});
+IsLoggedOut.args = {
+  isLoggedIn: false,
+  linkToLoginPage: action("link to login page"),
 };
