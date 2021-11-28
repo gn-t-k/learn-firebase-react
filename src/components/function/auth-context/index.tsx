@@ -1,8 +1,8 @@
 import { createContext, ReactNode } from "react";
-import * as Auth from "stores/auth-store";
 import { useAuth } from "./hooks/use-auth";
+import { initialState, State } from "./hooks/use-auth-reducer";
 
-export const AuthContext = createContext<Auth.State>(Auth.initialState);
+export const AuthContext = createContext<State>(initialState);
 
 type Props = {
   children: ReactNode;

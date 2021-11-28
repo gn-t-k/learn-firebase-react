@@ -1,12 +1,8 @@
+import { Dispatcher } from "components/function/auth-context/hooks/use-auth-reducer";
 import { User } from "firebase/auth";
-import { LoggedInActionPayload } from "stores/auth-store";
 
-type GetObserverProps = {
-  dispatchLoggedInAction: (payload: LoggedInActionPayload) => void;
-  dispatchLoggedOutAction: () => void;
-};
 export const dispatchActionByAuthState =
-  ({ dispatchLoggedInAction, dispatchLoggedOutAction }: GetObserverProps) =>
+  ({ dispatchLoggedInAction, dispatchLoggedOutAction }: Dispatcher) =>
   async (user: User | null) => {
     if (user === null) {
       dispatchLoggedOutAction();

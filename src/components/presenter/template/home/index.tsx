@@ -5,7 +5,7 @@ import Link from "components/presenter/navigation/link";
 type LoggedInProps = {
   isLoggedIn: true;
   clientID: string;
-  onLogoutSubmit: () => Promise<void>;
+  logout: () => Promise<void>;
 };
 
 type LoggedOutProps = {
@@ -19,7 +19,7 @@ const HomePresenter = (props: Props): JSX.Element =>
 
 const LoggedInHome = (props: LoggedInProps) => {
   const onLogoutSubmit = useLogoutForm({
-    onLogoutSubmit: props.onLogoutSubmit,
+    onLogoutSubmit: props.logout,
   });
 
   return (

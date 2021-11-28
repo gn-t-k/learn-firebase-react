@@ -1,27 +1,26 @@
 import { AuthContext } from "components/function/auth-context";
+import LoadingPresenter from "components/presenter/feedback/loading";
 import HomePresenter, { Props } from "components/presenter/template/home";
 import { useContext } from "react";
-import { useRouter } from "components/hooks/use-router";
-import { logout } from "libs/firebase/auth/logout";
+import { useLogout } from "./hooks/use-logout";
 
 const Home = () => {
-  const { clientID } = useContext(AuthContext);
+  const auth = useContext(AuthContext);
+  const logout = useLogout();
 
-  const router = useRouter();
-  const onLogoutSubmit = async () => {
-    router.push("/login");
-    await logout();
-  };
+  if (auth.loginStatus === "unknown") {
+    return <LoadingPresenter />;
+  }
 
   const args: Props =
-    clientID === null
+    auth.loginStatus === "loggedIn"
       ? {
-          isLoggedIn: false,
+          isLoggedIn: true,
+          clientID: auth.clientID,
+          logout,
         }
       : {
-          isLoggedIn: true,
-          clientID,
-          onLogoutSubmit,
+          isLoggedIn: false,
         };
 
   return <HomePresenter {...args} />;

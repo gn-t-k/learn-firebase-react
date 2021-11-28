@@ -15,7 +15,7 @@ export const IsLoggedIn = TemplateStory.bind({});
 IsLoggedIn.args = {
   isLoggedIn: true,
   clientID: "clientID",
-  onLogoutSubmit: () => new Promise(action("logout")),
+  logout: () => new Promise(action("logout")),
 };
 
 export const IsLoggedOut = TemplateStory.bind({});
