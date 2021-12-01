@@ -1,5 +1,6 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "./auth";
+import { FirebaseError } from "firebase/app";
 
 type Props = {
   email: string;
@@ -7,5 +8,11 @@ type Props = {
 };
 
 export const signUp = async ({ email, password }: Props) => {
-  await createUserWithEmailAndPassword(auth, email, password);
+  try {
+    await createUserWithEmailAndPassword(auth, email, password);
+
+    return null;
+  } catch (error) {
+    return error instanceof FirebaseError ? error.code : "something wrong";
+  }
 };

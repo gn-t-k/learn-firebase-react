@@ -3,7 +3,7 @@ import { useLogin } from "./hooks/use-login";
 
 const LoginContainer = () => {
   const [
-    { email, password },
+    { email, password, isProcessing, errorMessage },
     { setEmail, setPassword, onLoginSubmit, onSignUpSubmit },
   ] = useLogin();
 
@@ -12,6 +12,8 @@ const LoginContainer = () => {
       {...{
         email,
         password,
+        isProcessing,
+        errorMessage,
         onEmailChange: setEmail,
         onPasswordChange: setPassword,
         onLoginSubmit,
