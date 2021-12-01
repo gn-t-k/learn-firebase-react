@@ -9,6 +9,7 @@ export default {
 } as ComponentMeta<typeof LoginPresenter>;
 
 const TemplateStory: ComponentStory<typeof LoginPresenter> = (props) => {
+  const { isProcessing, errorMessage } = props;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const onEmailChange = (value: string) => {
@@ -27,6 +28,8 @@ const TemplateStory: ComponentStory<typeof LoginPresenter> = (props) => {
       {...{
         email,
         onEmailChange,
+        isProcessing,
+        errorMessage,
         password,
         onPasswordChange,
         onLoginSubmit,
@@ -37,4 +40,19 @@ const TemplateStory: ComponentStory<typeof LoginPresenter> = (props) => {
 };
 
 export const Default = TemplateStory.bind({});
-Default.args = {};
+Default.args = {
+  isProcessing: false,
+  errorMessage: null,
+};
+
+export const OnProcessing = TemplateStory.bind({});
+OnProcessing.args = {
+  isProcessing: true,
+  errorMessage: null,
+};
+
+export const OnError = TemplateStory.bind({});
+OnError.args = {
+  isProcessing: false,
+  errorMessage: "エラーメッセージ",
+};
